@@ -1,0 +1,182 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctdrncjrvhdu5"]
+
+[ext_resource type="Texture2D" uid="uid://cw1wbjg4u6odc" path="res://ui/health_bar/Elements-01.png" id="1_5gy6f"]
+[ext_resource type="Texture2D" uid="uid://cc4ugmp4whfvo" path="res://ui/health_bar/heart.png" id="2_bi5bd"]
+[ext_resource type="Texture2D" uid="uid://1jng2w67882o" path="res://Player/sprite/player-idle.png" id="2_t84al"]
+[ext_resource type="Texture2D" uid="uid://0iwwmgg5sv1p" path="res://ui/health_bar/heart-full.png" id="5_ddkwa"]
+
+[sub_resource type="GDScript" id="GDScript_bk2nl"]
+script/source = "extends Node2D
+
+@export var heart_full : Texture2D
+@export var heart_empty : Texture2D
+
+@onready var hearts = [
+	$\"16heart/heart1\",
+	$\"16heart/heart2\",
+	$\"16heart/heart3\",
+	$\"16heart/heart4\",
+	$\"16heart/heart5\",
+	$\"16heart/heart6\",
+	$\"16heart/heart7\",
+	$\"16heart/heart8\",
+	$\"16heart/heart9\",
+	$\"16heart/heart10\",
+	$\"16heart/heart11\",
+	$\"16heart/heart12\",
+	$\"16heart/heart13\",
+	$\"16heart/heart14\",
+	$\"16heart/heart15\",
+	$\"16heart/heart16\"
+]
+
+var max_health = 16
+var current_health = max_health
+
+func _ready():
+	HealthManager.on_health_change.connect(on_player_health_changed)
+	update_health_bar()
+
+func on_player_health_changed(player_current_health : int):
+	current_health = player_current_health
+	update_health_bar()
+
+func update_health_bar():
+	for i in range(max_health):
+		if i < current_health:
+			hearts[i].texture = load(\"res://ui/health_bar/heart.png\")
+		else:
+			hearts[i].texture = heart_empty
+"
+
+[node name="HealthBar" type="Node2D"]
+texture_filter = 1
+script = SubResource("GDScript_bk2nl")
+heart_full = ExtResource("2_bi5bd")
+heart_empty = ExtResource("1_5gy6f")
+
+[node name="health_bar_background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(656, 200)
+texture = ExtResource("1_5gy6f")
+region_enabled = true
+region_rect = Rect2(20, 28, 1309, 400)
+
+[node name="health_bar_avatar" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(200, 192)
+scale = Vector2(16, 16)
+texture = ExtResource("2_t84al")
+region_enabled = true
+region_rect = Rect2(111, 25, 15, 15)
+
+[node name="16heart" type="Node" parent="."]
+
+[node name="heart1" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(419, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart2" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(471, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart3" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(523, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart4" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(575, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart5" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(627, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart6" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(679, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart7" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(731, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart8" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(783, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart9" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(835, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart10" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(887, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart11" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(939, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart12" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(991, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart13" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(1043, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart14" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(1095, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart15" type="Sprite2D" parent="16heart"]
+texture_filter = 1
+position = Vector2(1147, 270)
+texture = ExtResource("2_bi5bd")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 67)
+
+[node name="heart16" type="Sprite2D" parent="16heart"]
+position = Vector2(1216, 269)
+texture = ExtResource("5_ddkwa")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://e268w3wwkyri"]
+
+[ext_resource type="Script" path="res://ui/health_bar/health_bar2.gd" id="1_63n17"]
+[ext_resource type="Texture2D" uid="uid://cw1wbjg4u6odc" path="res://ui/health_bar/Elements-01.png" id="2_1sk0y"]
+[ext_resource type="Texture2D" uid="uid://okgnuklubwid" path="res://ui/health_bar/Elements-01 - progress-02.png" id="3_2sn7o"]
+[ext_resource type="Texture2D" uid="uid://1jng2w67882o" path="res://Player/sprite/player-idle.png" id="4_e61dd"]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_63n17")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 16.0
+value = 16.0
+texture_under = ExtResource("2_1sk0y")
+texture_progress = ExtResource("3_2sn7o")
+texture_progress_offset = Vector2(416, 263)
+
+[node name="Avatar" type="Sprite2D" parent="."]
+position = Vector2(215, 224)
+scale = Vector2(18, 18)
+texture = ExtResource("4_e61dd")
+region_enabled = true
+region_rect = Rect2(31, 24, 15, 13)
